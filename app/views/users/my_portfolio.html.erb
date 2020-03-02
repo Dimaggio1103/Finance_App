@@ -18,3 +18,27 @@
 <div id="results">
 <%= render 'users/result' %>
 </div>
+<div class="row">
+  <div class="col-9">
+    <table class="table table-striped table-dark">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Ticker</th>
+        <th scope="col">Last Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= @tracked_stocks.each do |stock| %>
+          <tr>
+            <th scope="row">1</th>
+            <td><%= stock.name %></td>
+            <td><%= stock.ticker %></td>
+            <td><%= stock.last_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
