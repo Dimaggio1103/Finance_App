@@ -3,42 +3,21 @@
 <div class="search-area">
   <h3>Search for ticker</h3>
   <%= form_tag search_stock_path, remote: true, method: :get do %>
-  <div class="form-group row">
-    <div class="col-sm-9 no-right-padding">
-      <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker Symbol", autofocus: true, class: "form-control-lg" %>
+    <div class="form-group row">
+      <div class="col-sm-9 no-right-padding">
+        <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker Symbol", autofocus: true, class: "form-control" %>
+      </div>
+      <div class="col-sm-3">
+        <%= button_tag type: :submit, class: "btn btn-success" do %>
+          <%= fa_icon 'search 2x no-left-padding' %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-3">
-      <%= button_tag type: :submit, class: "btn btn-success" do %>
-        <%= fa_icon 'search 2x no-left-padding' %>
-      <% end %>
-    </div>
-  </div>
   <% end %>
 </div>
 <div id="results">
-<%= render 'users/result' %>
+  <% render 'users/result' %>
 </div>
-<div class="row">
-  <div class="col-9">
-    <table class="table table-striped table-dark">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Stock</th>
-        <th scope="col">Ticker</th>
-        <th scope="col">Last Price</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%= @tracked_stocks.each do |stock| %>
-          <tr>
-            <th scope="row">1</th>
-            <td><%= stock.name %></td>
-            <td><%= stock.ticker %></td>
-            <td><%= stock.last_price %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<% if !@tracked_stocks.empty? %>
+ <% render 'stocks/list' %>
+<% end %>
