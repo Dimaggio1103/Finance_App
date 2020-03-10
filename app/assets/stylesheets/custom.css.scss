@@ -2,7 +2,6 @@
 
 .search-area{
   padding-top: 50px;
-  width: 100%;
 }
 
 .no-right-padding{
@@ -10,4 +9,13 @@
 }
 .no-left-padding{
   padding-left: 0 !important;
+}
+
+.results-block{
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.logout-button{
+  margin-right: 10px;
 }
