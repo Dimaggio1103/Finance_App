@@ -1,11 +1,11 @@
 <h1>My Stocks</h1>
 
 <div class="search-area">
-  <h3>Search for ticker</h3>
+  <h3>Search Stocks</h3>
   <%= form_tag search_stock_path, remote: true, method: :get do %>
     <div class="form-group row">
       <div class="col-sm-9 no-right-padding">
-        <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker Symbol", autofocus: true, class: "form-control" %>
+        <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
       </div>
       <div class="col-sm-3">
         <%= button_tag type: :submit, class: "btn btn-success" do %>
@@ -19,8 +19,8 @@
 <div>
 </div>
 <div id="results">
-  <% render partial: 'users/result' %>
+  <%= render partial: 'users/result' %>
 </div>
-<% unless @tracked_stocks.blank? %>
-<%  render partial: 'stocks/list'  %>
+<% if !@tracked_stocks.blank? %>
+<%=  render 'stocks/list'  %>
 <% end %>
